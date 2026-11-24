@@ -1,0 +1,81 @@
+<!doctype html>
+<!-- dev/creator=tubakhxn -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gesture Text Editor</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<main class="app">
+  <div class="camBox" id="camBox">
+    <video id="video" playsinline muted></video>
+    <canvas id="fx"></canvas>
+  </div>
+  <div class="shade"></div>
+
+  <section class="editor">
+    <header class="bar">
+      <div class="heading">
+        <h1 id="title">BROWSE BY WORD</h1>
+        <p id="subtitle"></p>
+      </div>
+      <div class="seg" id="modeSeg" role="group" aria-label="Selection mode">
+        <button data-mode="word">Word</button>
+        <button data-mode="sentence">Sentence</button>
+        <button data-mode="paragraph">Paragraph</button>
+      </div>
+    </header>
+    <div class="stage" id="stage">
+      <article id="doc" class="doc" aria-live="polite"></article>
+    </div>
+  </section>
+
+  <div id="overlay" class="overlay"></div>
+
+  <div class="hud">
+    <span class="chip" id="gChip"><i></i><b id="gName">STARTING</b></span>
+    <span class="fps" id="fps"></span>
+  </div>
+
+  <ul class="legend">
+    <li><b>Point</b><span>move</span></li>
+    <li><b>Two fingers</b><span>word / sentence / paragraph</span></li>
+    <li><b>Pinch</b><span>open options</span></li>
+    <li><b>Point left / right</b><span>choose</span></li>
+    <li><b>Hold pinch</b><span>apply</span></li>
+    <li><b>Open palm</b><span>back</span></li>
+    <li><b>Hold fist</b><span>undo</span></li>
+  </ul>
+
+  <footer class="tools">
+    <select id="docSelect" aria-label="Sample document"></select>
+    <button id="btnUndo" title="Undo (Ctrl+Z)">Undo</button>
+    <button id="btnRedo" title="Redo (Ctrl+Y)">Redo</button>
+    <button id="btnReset" title="Restore the loaded text">Reset</button>
+    <button id="btnPaste" title="Paste or open your own text">Paste text</button>
+    <button id="btnSave" title="Download the edited text">Save</button>
+    <span id="status" class="status" data-kind="info" role="status"></span>
+  </footer>
+
+  <div class="camMsg" id="camMsg"><span id="camText">Requesting camera...</span><button id="camRetry" hidden>Retry camera</button></div>
+</main>
+
+<dialog id="pasteDlg">
+  <form method="dialog" id="pasteForm">
+    <h2>Use your own text</h2>
+    <p>Separate paragraphs with a blank line.</p>
+    <textarea id="pasteText" rows="10" spellcheck="false" placeholder="Paste text here..."></textarea>
+    <div class="dlgBtns">
+      <label class="fileBtn">Open .txt file<input type="file" id="fileInput" accept=".txt,.md,text/plain" hidden></label>
+      <span class="spacer"></span>
+      <button value="cancel" id="pasteCancel">Cancel</button>
+      <button value="ok" id="pasteOk" class="primary">Use this text</button>
+    </div>
+  </form>
+</dialog>
+
+<script type="module" src="/static/js/main.js"></script>
+</body>
+</html>
