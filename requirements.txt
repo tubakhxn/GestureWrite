@@ -1,0 +1,2 @@
+# dev/creator=tubakhxn
+flask>=2.2
